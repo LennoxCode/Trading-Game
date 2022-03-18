@@ -2,22 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tile : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
+
+    public static GameObject PInstance;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        PInstance = this.gameObject;    
     }
 
     // Update is called once per frame
     void Update()
     {
         
-    }
-
-    void OnMouseDown()
-    {
-        PlayerController.PInstance.transform.position = transform.position + new Vector3(0, 0.8f, 0);
     }
 }
