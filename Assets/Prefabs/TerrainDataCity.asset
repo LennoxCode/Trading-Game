@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9cf4c9d7dd624147ae6116910736d8a, type: 3}
   m_Name: TerrainDataCity
   m_EditorClassIdentifier: 
-  isAccesible: 0
-  movementCost: 0
-  terrainKind: 
+  isAccesible: 1
+  movementCost: 3
+  terrainKind: City
