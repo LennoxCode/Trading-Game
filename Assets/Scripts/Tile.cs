@@ -5,6 +5,8 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     // Start is called before the first frame update
+    [SerializeField] private Terrain terrain;
+
     void Start()
     {
         
@@ -18,6 +20,7 @@ public class Tile : MonoBehaviour
 
     void OnMouseDown()
     {
-        PlayerController.PInstance.transform.position = transform.position + new Vector3(0, 0.8f, 0);
+        if(terrain.isAccesible)PlayerController.PInstance.transform.position = transform.position + new Vector3(0, 0.8f, 0);
     }
+    public Terrain GetTerrain() { return terrain; }
 }
