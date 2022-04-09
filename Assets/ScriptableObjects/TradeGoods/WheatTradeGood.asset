@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97591b2a7c8055548a8dc7a35a9e79c7, type: 3}
   m_Name: WheatTradeGood
   m_EditorClassIdentifier: 
-  baseCost: 0
-  weight: 0
-  isEdible: 0
-  foodValue: 0
+  name: wheat
+  baseCost: 100
+  weight: 1
+  isEdible: 1
+  foodValue: 2

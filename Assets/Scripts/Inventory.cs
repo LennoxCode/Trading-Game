@@ -18,7 +18,10 @@ public class Inventory : MonoBehaviour
         
     }
 
+    public void SellTo(Inventory to, TradingGood good, int amount)
+    {
 
+    }
 }
 public class ItemInInventory
 {

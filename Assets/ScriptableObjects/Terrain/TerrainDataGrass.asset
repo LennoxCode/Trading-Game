@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TerrainDataGrass
   m_EditorClassIdentifier: 
   isAccesible: 1
-  movementCost: 1
-  terrainKind: Grass
+  movementCost: 2
+  terrainKind: City
