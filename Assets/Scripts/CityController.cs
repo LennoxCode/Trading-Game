@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class CityController : MonoBehaviour
 {
+    private Inventory cityInventory;
     // Start is called before the first frame update
     void Start()
     {
         
     }
-
+    public void SetupTradingMenu() { }
     // Update is called once per frame
     void Update()
     {
@@ -19,6 +20,7 @@ public class CityController : MonoBehaviour
         if (distanceToPlayer.magnitude > 0) {
             MenuController.MCInstance.SetTradeButton(false);
             MenuController.MCInstance.DeactiveTradeMenu();
+            
         }
     }
 }
