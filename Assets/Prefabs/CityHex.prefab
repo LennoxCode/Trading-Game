@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 4533915812301493456}
   - component: {fileID: 2966220452216168153}
   - component: {fileID: 2966220452216168133}
+  - component: {fileID: 2496558518406433733}
   m_Layer: 0
   m_Name: CityHex
   m_TagString: Untagged
@@ -146,6 +147,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrain: {fileID: 11400000, guid: 7edf3230a2c00dc4b835b710c95b50a3, type: 2}
+--- !u!114 &2496558518406433733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2732356870863746309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5c73ddc104bb8c4189ea556279530c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3175924670877436620
 GameObject:
   m_ObjectHideFlags: 0
