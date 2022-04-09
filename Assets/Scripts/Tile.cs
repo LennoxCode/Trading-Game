@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Tile : MonoBehaviour
 {
@@ -15,12 +16,12 @@ public class Tile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
 
+    }
+    
     void OnMouseDown()
     {
-        if(terrain.isAccesible)PlayerController.PInstance.transform.position = transform.position + new Vector3(0, 0.8f, 0);
+        if(terrain.isAccesible && !EventSystem.current.IsPointerOverGameObject()) PlayerController.PInstance.transform.position = transform.position + new Vector3(0, 0.8f, 0);
     }
     public Terrain GetTerrain() { return terrain; }
 }

@@ -15,6 +15,10 @@ public class CityController : MonoBehaviour
     {
         Vector3 distanceToPlayer = PlayerController.PInstance.transform.position -  transform.position;
         distanceToPlayer.y = 0;
-        if (distanceToPlayer.magnitude == 0) Debug.LogError("Player is arrived at city");
+        if (distanceToPlayer.magnitude == 0) MenuController.MCInstance.SetTradeButton(true);
+        if (distanceToPlayer.magnitude > 0) {
+            MenuController.MCInstance.SetTradeButton(false);
+            MenuController.MCInstance.DeactiveTradeMenu();
+        }
     }
 }
