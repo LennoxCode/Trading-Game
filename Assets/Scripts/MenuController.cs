@@ -22,6 +22,7 @@ public class MenuController : MonoBehaviour
     }
     public void SetTradeButton(bool active)
     {
+        Debug.Log("this function is called");
         tradeButton.SetActive(active);
     }
     public void ToggleTradeMenu()
