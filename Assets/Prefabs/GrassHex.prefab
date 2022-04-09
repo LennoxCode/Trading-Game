@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2966220452216168153}
   - component: {fileID: 2966220452216168133}
   m_Layer: 0
-  m_Name: hex3
+  m_Name: GrassHex
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
