@@ -27,11 +27,13 @@ public class MenuController : MonoBehaviour
     public void ToggleTradeMenu()
     {
         tradeMenu.SetActive(!tradeMenu.activeSelf);
-        tradeMenu.GetComponent<TradeMenuItemController>();
+        //tradeMenu.GetComponent<TradeMenuItemController>();
+        ClearTradingGoods();
     }
     public void DeactiveTradeMenu()
     {
         tradeMenu.SetActive(false);
+        
     }
     public void InstantiateTradingGood(Inventory.ItemInInventory itemInInventory)
     {
@@ -39,5 +41,13 @@ public class MenuController : MonoBehaviour
         newTradingGood.transform.SetParent(tradeMenu2.transform, false);
         newTradingGood.GetComponent<TradeMenuItemController>().UpdateTradeGoodDisplay(itemInInventory.good.goodName, itemInInventory.amountHeld, itemInInventory.good.associatedImage);
     }
-    
+
+    public void ClearTradingGoods()
+    {
+        foreach (Transform child in tradeMenu2.transform)
+        {
+            GameObject.Destroy(child.gameObject);
+        }
+        
+    }
 }
