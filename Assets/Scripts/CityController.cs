@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,7 +31,16 @@ public class CityController : MonoBehaviour
 
     public void SellGoodToPlayer(string goodName)
     {
-        Debug.Log("selling the following good to player: " + goodName);
+        cityInventory.SellTo(PlayerController.instance.GetInventory(),goodName, 1);
+       foreach (Inventory.ItemInInventory item in cityInventory.itemsInInventory)
+       {
+           if (item.good.goodName.Equals(goodName))
+           {
+               PlayerController.instance.TakeMoney((int)Math.Round(item.good.baseCost * item.localModifier));
+               MenuController.MCInstance.UpdateTradeGoodDisplay(item);
+           }
+           
+       }
     }
 
     public void BuyGoodFromPlayer(string goodName)

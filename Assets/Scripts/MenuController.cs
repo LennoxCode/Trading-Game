@@ -42,6 +42,14 @@ public class MenuController : MonoBehaviour
         newTradingGood.GetComponent<TradeMenuItemController>().UpdateTradeGoodDisplay(itemInInventory.good.goodName, itemInInventory.amountHeld, itemInInventory.good.associatedImage);
     }
 
+    public void UpdateTradeGoodDisplay(Inventory.ItemInInventory itemInInventory)
+    {
+        foreach (Transform child in tradeMenu2.transform)
+        {
+            if (child.GetComponent<TradeMenuItemController>().GetGoodName().Equals(itemInInventory.good.goodName)) 
+                child.GetComponent<TradeMenuItemController>().UpdateTradeGoodDisplay(itemInInventory.amountHeld);
+        }
+    }
     public void ClearTradingGoods()
     {
         foreach (Transform child in tradeMenu2.transform)

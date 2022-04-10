@@ -42,6 +42,15 @@ public class TradeMenuItemController : MonoBehaviour
         }
     }
 
+    public String GetGoodName()
+    {
+        return tradeGoodName;
+    }
+
+    public void UpdateTradeGoodDisplay(int amountAvailable)
+    {
+        productStockDisplay.text = amountAvailable + " Available";
+    }
     void Start()
     {
         
