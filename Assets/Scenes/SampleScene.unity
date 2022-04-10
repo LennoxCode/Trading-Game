@@ -2773,6 +2773,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CityHex
       objectReference: {fileID: 0}
+    - target: {fileID: 2732356870863746309, guid: 07fe4f52b7eef5c4991393e41ee3b745,
+        type: 3}
+      propertyPath: m_TagString
+      value: Cities
+      objectReference: {fileID: 0}
     - target: {fileID: 3359853222857420735, guid: 07fe4f52b7eef5c4991393e41ee3b745,
         type: 3}
       propertyPath: m_RootOrder
@@ -4258,6 +4263,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CityHex
       objectReference: {fileID: 0}
+    - target: {fileID: 2732356870863746309, guid: 07fe4f52b7eef5c4991393e41ee3b745,
+        type: 3}
+      propertyPath: m_TagString
+      value: Cities
+      objectReference: {fileID: 0}
     - target: {fileID: 3359853222857420735, guid: 07fe4f52b7eef5c4991393e41ee3b745,
         type: 3}
       propertyPath: m_RootOrder
@@ -4428,7 +4438,7 @@ GameObject:
   - component: {fileID: 1954497646}
   - component: {fileID: 1954497650}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4523,6 +4533,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c58ce69d8566a684ab6022f32bd6405d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inventory:
+    itemsInInventory:
+    - good: {fileID: 11400000, guid: 93657c6c5e80454408803b596b6f3cae, type: 2}
+      amountHeld: 0
+      localModifier: 0
+    - good: {fileID: 11400000, guid: e52aece2074093b44a5b56fc097d2d23, type: 2}
+      amountHeld: 0
+      localModifier: 0
 --- !u!1001 &1970697713
 PrefabInstance:
   m_ObjectHideFlags: 0

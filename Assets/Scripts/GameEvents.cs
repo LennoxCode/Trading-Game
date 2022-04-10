@@ -21,7 +21,7 @@ public class GameEvents : MonoBehaviour
         }
     }
     public event Action playerEnteredCity;
-
+    
     public void PlayerEnteredCity()
     {
         if (playerEnteredCity != null)
@@ -30,6 +30,14 @@ public class GameEvents : MonoBehaviour
         }
     }
 
-    public event Action BuyGood;
+    public event Action<string> buyGood;
+
+    public void BuyGood(string goodName)
+    {
+        if (buyGood != null)
+        {
+            buyGood(goodName);
+        }
+    }
 
 }

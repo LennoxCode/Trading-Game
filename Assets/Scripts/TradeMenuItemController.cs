@@ -31,7 +31,8 @@ public class TradeMenuItemController : MonoBehaviour
 
     public void OnBuyPressed()
     {
-        playerCity.SellGoodToPlayer(tradeGoodName);
+        //playerCity.SellGoodToPlayer(tradeGoodName);
+        GameEvents.current.BuyGood(tradeGoodName);
     }
 
     private void Awake()

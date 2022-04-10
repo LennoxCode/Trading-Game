@@ -14,6 +14,7 @@ public class CityController : MonoBehaviour
     void Start()
     {
         GameEvents.current.onTradMenuButtonWasClicked += OnTradMenuButtonWasClicked;
+        GameEvents.current.buyGood += SellGoodToPlayer;
     }
     private void OnTradMenuButtonWasClicked()
     {
@@ -31,6 +32,7 @@ public class CityController : MonoBehaviour
 
     public void SellGoodToPlayer(string goodName)
     {
+        if (!playerIsInCity) return;
         cityInventory.SellTo(PlayerController.instance.GetInventory(),goodName, 1);
        foreach (Inventory.ItemInInventory item in cityInventory.itemsInInventory)
        {
