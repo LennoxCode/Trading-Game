@@ -39,4 +39,5 @@ public class MenuController : MonoBehaviour
         newTradingGood.transform.SetParent(tradeMenu2.transform, false);
         newTradingGood.GetComponent<TradeMenuItemController>().UpdateTradeGoodDisplay(itemInInventory.good.goodName, itemInInventory.amountHeld, itemInInventory.good.associatedImage);
     }
+    
 }
