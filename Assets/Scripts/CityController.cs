@@ -45,6 +45,16 @@ public class CityController : MonoBehaviour
 
     public void BuyGoodFromPlayer(string goodName)
     {
+        cityInventory.BuyFrom(PlayerController.instance.GetInventory(), goodName, 1);
+        foreach (Inventory.ItemInInventory item in cityInventory.itemsInInventory)
+        {
+            if (item.good.goodName.Equals(goodName))
+            {
+                PlayerController.instance.TakeMoney((int)Math.Round(item.good.baseCost * item.localModifier));
+                MenuController.MCInstance.UpdateTradeGoodDisplay(item);
+            }
+           
+        }
         
     }
     public bool IsPlayerInCity()
