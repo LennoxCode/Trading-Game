@@ -8,7 +8,7 @@ public class Inventory
 {
     private int test;
     // Start is called before the first frame update
-    [SerializeField]private ItemInInventory[] itemsInInventory;
+    public  ItemInInventory[] itemsInInventory;
 
     public Inventory(ItemInInventory[] itemsInInventory)
     {
@@ -29,6 +29,7 @@ public class Inventory
     {
 
     }
+    
     [Serializable]
     public struct ItemInInventory
     {

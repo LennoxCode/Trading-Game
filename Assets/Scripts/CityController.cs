@@ -16,9 +16,11 @@ public class CityController : MonoBehaviour
     }
     private void OnTradMenuButtonWasClicked()
     {
-        Vector3 distanceToPlayer = PlayerController.PInstance.transform.position - transform.position;
-        distanceToPlayer.y = 0;
-        if (distanceToPlayer.magnitude == 0) Debug.Log("One city can have event");
+        if (!playerIsInCity) return;
+        foreach (Inventory.ItemInInventory item in cityInventory.itemsInInventory)
+        {
+            MenuController.MCInstance.InstantiateTradingGood(item);
+        }
     }
     public void SetupTradingMenu() { }
     // Update is called once per frame

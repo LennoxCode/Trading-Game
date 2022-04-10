@@ -22,21 +22,21 @@ public class MenuController : MonoBehaviour
     }
     public void SetTradeButton(bool active)
     {
-        Debug.Log("this function is called");
         tradeButton.SetActive(active);
     }
     public void ToggleTradeMenu()
     {
         tradeMenu.SetActive(!tradeMenu.activeSelf);
-        MenuController.MCInstance.InstantiateTradingGood();
+        tradeMenu.GetComponent<TradeMenuItemController>();
     }
     public void DeactiveTradeMenu()
     {
         tradeMenu.SetActive(false);
     }
-    public void InstantiateTradingGood()
+    public void InstantiateTradingGood(Inventory.ItemInInventory itemInInventory)
     {
         GameObject newTradingGood = GameObject.Instantiate(tradingGoodMenuItemPrefab);
         newTradingGood.transform.SetParent(tradeMenu2.transform, false);
+        newTradingGood.GetComponent<TradeMenuItemController>().UpdateTradeGoodDisplay(itemInInventory.good.goodName, itemInInventory.amountHeld, itemInInventory.good.associatedImage);
     }
 }
