@@ -20,5 +20,14 @@ public class GameEvents : MonoBehaviour
             onTradMenuButtonWasClicked();
         }
     }
+    public event Action playerEnteredCity;
+
+    public void PlayerEnteredCity()
+    {
+        if (playerEnteredCity != null)
+        {
+            playerEnteredCity();
+        }
+    }
 
 }

@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class CityController : MonoBehaviour
 {
-    private Inventory cityInventory;
     public float distanceToPlayerxd;
+
+    private Inventory cityInventory;
+    private bool playerIsInCity = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,9 +29,11 @@ public class CityController : MonoBehaviour
         this.distanceToPlayerxd = distanceToPlayer.magnitude;
         if (distanceToPlayer.magnitude == 0)
         {
+            playerIsInCity = true;
             MenuController.MCInstance.SetTradeButton(true);
         }
-        if (distanceToPlayer.magnitude > 0) {
+        if (distanceToPlayer.magnitude > 0 && playerIsInCity) {
+            playerIsInCity = false;
             MenuController.MCInstance.SetTradeButton(false);
             MenuController.MCInstance.DeactiveTradeMenu();
             
