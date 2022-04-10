@@ -1,12 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[Serializable]
+public class Inventory 
 
-public class Inventory : MonoBehaviour
 {
+    private int test;
     // Start is called before the first frame update
-    private ArrayList itemsInInventory;
+    [SerializeField]private ItemInInventory[] itemsInInventory;
 
+    public Inventory(ItemInInventory[] itemsInInventory)
+    {
+        this.itemsInInventory = itemsInInventory;
+    }
     void Start()
     {
         
@@ -22,10 +29,17 @@ public class Inventory : MonoBehaviour
     {
 
     }
-}
-public class ItemInInventory
-{
-    TradingGood good;
-    int amountHeld;
+    [Serializable]
+    public struct ItemInInventory
+    {
+        ItemInInventory(TradingGood good, int amountHeld)
+        {
+            this.good = good;
+            this.amountHeld = amountHeld;
+        }
+        public TradingGood good;
+        public int amountHeld;
 
+    }
 }
+

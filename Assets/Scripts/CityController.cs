@@ -6,7 +6,7 @@ public class CityController : MonoBehaviour
 {
     public float distanceToPlayerxd;
 
-    private Inventory cityInventory;
+    [SerializeField]private Inventory cityInventory;
     private bool playerIsInCity = false;
 
     // Start is called before the first frame update
