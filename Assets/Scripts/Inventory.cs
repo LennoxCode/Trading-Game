@@ -9,7 +9,7 @@ public class Inventory
     private int test;
     // Start is called before the first frame update
     public  ItemInInventory[] itemsInInventory;
-
+    
     public Inventory(ItemInInventory[] itemsInInventory)
     {
         this.itemsInInventory = itemsInInventory;

@@ -30,4 +30,6 @@ public class GameEvents : MonoBehaviour
         }
     }
 
+    public event Action BuyGood;
+
 }

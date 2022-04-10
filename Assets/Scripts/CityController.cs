@@ -22,7 +22,25 @@ public class CityController : MonoBehaviour
             MenuController.MCInstance.InstantiateTradingGood(item);
         }
     }
-    public void SetupTradingMenu() { }
+
+    public void SetupTradingMenu()
+    {
+        
+    }
+
+    public void SellGoodToPlayer(string goodName)
+    {
+        Debug.Log("selling the following good to player: " + goodName);
+    }
+
+    public void BuyGoodFromPlayer(string goodName)
+    {
+        
+    }
+    public bool IsPlayerInCity()
+    {
+        return playerIsInCity;
+    }
     // Update is called once per frame
     void Update()
     {

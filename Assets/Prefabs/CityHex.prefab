@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 2496558518406433733}
   m_Layer: 0
   m_Name: CityHex
-  m_TagString: Untagged
+  m_TagString: Cities
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,6 +159,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5c73ddc104bb8c4189ea556279530c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distanceToPlayerxd: 0
+  cityInventory:
+    itemsInInventory: []
 --- !u!1 &3175924670877436620
 GameObject:
   m_ObjectHideFlags: 0
