@@ -14,16 +14,6 @@ public class Inventory
     {
         this.itemsInInventory = itemsInInventory;
     }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void ChangeGoodAmount(string goodName, int amount)
     {
@@ -35,16 +25,20 @@ public class Inventory
         }
         itemsInInventory[index].ChangeAmountHeld(amount);
     }
-    public void SellTo(Inventory to, string goodName, int amount)
+    public bool SellTo(Inventory to, string goodName, int amount)
     {
+        if (GetItemByName(goodName).Value.amountHeld < amount) return false;
         to.ChangeGoodAmount(goodName, amount);
         ChangeGoodAmount(goodName, -amount);
+        return true;
     }
 
-    public void BuyFrom(Inventory from, string goodName, int amount)
+    public bool BuyFrom(Inventory from, string goodName, int amount)
     {
+        if (from.GetItemByName(goodName).Value.amountHeld < amount) return false;
         from.ChangeGoodAmount(goodName, -amount);
         ChangeGoodAmount(goodName, amount);
+        return true;
     }
     public ItemInInventory? GetItemByName(string goodName)
     {

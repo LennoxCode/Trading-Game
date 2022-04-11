@@ -6,7 +6,7 @@ using UnityEngine;
 public class CityController : MonoBehaviour
 {
     [SerializeField]  private Inventory cityInventory;
-    private static readonly float SALEMODIFIER;
+    private static readonly float SALEMODIFIER = 0.8f;
     private bool playerIsInCity = false;
 
     // Start is called before the first frame update
@@ -32,33 +32,27 @@ public class CityController : MonoBehaviour
     public void SellGoodToPlayer(string goodName)
     {
         if (!playerIsInCity) return;
-        cityInventory.SellTo(PlayerController.instance.GetInventory(),goodName, 1);
+        int price = GetSalePriceOfGood(goodName);
+        if (price == 0 || PlayerController.instance.GetMoneyAmount() - price < 0)return ;
+        if (!cityInventory.SellTo(PlayerController.instance.GetInventory(), goodName, 1)) return;
        foreach (Inventory.ItemInInventory item in cityInventory.itemsInInventory)
        {
            if (item.good.goodName.Equals(goodName))
            {
-               PlayerController.instance.TakeMoney((int)Math.Round(item.good.baseCost * item.localModifier));
                MenuController.MCInstance.UpdateTradeGoodDisplay(item);
            }
            
        }
+       PlayerController.instance.ChangeMoney(-price);
     }
     public void BuyGoodFromPlayer(string goodName)
     {
         if (!playerIsInCity) return;
-        int price = GetSalePriceOfGood(goodName);
+        int price = GetBuyPriceOfGood(goodName);
         if (price == 0) return;
-        cityInventory.BuyFrom(PlayerController.instance.GetInventory(), goodName, 1);
-        foreach (Inventory.ItemInInventory item in cityInventory.itemsInInventory)
-        {
-            if (item.good.goodName.Equals(goodName))
-            {
-                PlayerController.instance.TakeMoney((int)Math.Round(item.good.baseCost * item.localModifier));
-                MenuController.MCInstance.UpdateTradeGoodDisplay(item);
-            }
-           
-        }
-        PlayerController.instance.TakeMoney(-price);
+        if(!cityInventory.BuyFrom(PlayerController.instance.GetInventory(), goodName, 1))return;
+        MenuController.MCInstance.UpdateTradeGoodDisplay(cityInventory.GetItemByName(goodName).Value);
+        PlayerController.instance.ChangeMoney(price);
         
     }
 
@@ -73,7 +67,7 @@ public class CityController : MonoBehaviour
 
     public int GetBuyPriceOfGood(string goodName)
     {
-        return Mathf.RoundToInt( GetSalePriceOfGood(goodName) * SALEMODIFIER);
+        return Mathf.RoundToInt(SALEMODIFIER * GetSalePriceOfGood(goodName) );
     }
     public bool IsPlayerInCity()
     {

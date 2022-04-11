@@ -7,10 +7,10 @@ public class PlayerController : MonoBehaviour
 
     public static GameObject PInstance;
     public static PlayerController instance;
-    [SerializeField] private readonly int startMoney;
-    [SerializeField] private readonly int startFood;
-    private int money;
-    private int food;
+    [SerializeField] private int startMoney;
+    [SerializeField] private int startFood;
+    [SerializeField]private int money;
+    [SerializeField]private int food;
 
     [SerializeField] private Inventory _inventory;
     // Start is called before the first frame update
@@ -28,9 +28,14 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    public void TakeMoney(int amount)
+    public void ChangeMoney(int amount)
     {
         money += amount;
+    }
+
+    public int GetMoneyAmount()
+    {
+        return money;
     }
     public Inventory GetInventory()
     {
