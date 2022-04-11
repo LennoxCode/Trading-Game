@@ -2755,7 +2755,7 @@ PrefabInstance:
     - target: {fileID: 2496558518406433733, guid: 07fe4f52b7eef5c4991393e41ee3b745,
         type: 3}
       propertyPath: cityInventory.itemsInInventory.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2496558518406433733, guid: 07fe4f52b7eef5c4991393e41ee3b745,
         type: 3}
@@ -2765,8 +2765,29 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 2496558518406433733, guid: 07fe4f52b7eef5c4991393e41ee3b745,
         type: 3}
+      propertyPath: cityInventory.itemsInInventory.Array.data[1].good
+      value: 
+      objectReference: {fileID: 11400000, guid: 2a6b90af8b9cfee44b9ee983a9da6e0e,
+        type: 2}
+    - target: {fileID: 2496558518406433733, guid: 07fe4f52b7eef5c4991393e41ee3b745,
+        type: 3}
       propertyPath: cityInventory.itemsInInventory.Array.data[0].amountHeld
       value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 2496558518406433733, guid: 07fe4f52b7eef5c4991393e41ee3b745,
+        type: 3}
+      propertyPath: cityInventory.itemsInInventory.Array.data[1].amountHeld
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2496558518406433733, guid: 07fe4f52b7eef5c4991393e41ee3b745,
+        type: 3}
+      propertyPath: cityInventory.itemsInInventory.Array.data[0].localModifier
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2496558518406433733, guid: 07fe4f52b7eef5c4991393e41ee3b745,
+        type: 3}
+      propertyPath: cityInventory.itemsInInventory.Array.data[1].localModifier
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 2732356870863746309, guid: 07fe4f52b7eef5c4991393e41ee3b745,
         type: 3}
@@ -4233,6 +4254,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2496558518406433733, guid: 07fe4f52b7eef5c4991393e41ee3b745,
         type: 3}
+      propertyPath: SALEMODIFIER
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2496558518406433733, guid: 07fe4f52b7eef5c4991393e41ee3b745,
+        type: 3}
       propertyPath: cityInventory.itemsInInventory.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -4257,6 +4283,16 @@ PrefabInstance:
         type: 3}
       propertyPath: cityInventory.itemsInInventory.Array.data[1].amountHeld
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2496558518406433733, guid: 07fe4f52b7eef5c4991393e41ee3b745,
+        type: 3}
+      propertyPath: cityInventory.itemsInInventory.Array.data[0].localModifier
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2496558518406433733, guid: 07fe4f52b7eef5c4991393e41ee3b745,
+        type: 3}
+      propertyPath: cityInventory.itemsInInventory.Array.data[1].localModifier
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2732356870863746309, guid: 07fe4f52b7eef5c4991393e41ee3b745,
         type: 3}
@@ -4533,6 +4569,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c58ce69d8566a684ab6022f32bd6405d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMoney: 400
+  startFood: 22
+  money: 0
+  food: 0
   _inventory:
     itemsInInventory:
     - good: {fileID: 11400000, guid: 93657c6c5e80454408803b596b6f3cae, type: 2}

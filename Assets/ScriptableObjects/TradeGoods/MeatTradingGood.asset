@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97591b2a7c8055548a8dc7a35a9e79c7, type: 3}
-  m_Name: WheatTradeGood
+  m_Name: MeatTradingGood
   m_EditorClassIdentifier: 
-  goodName: Wheat
-  baseCost: 100
-  weight: 1
+  goodName: Meat
+  baseCost: 150
+  weight: 1.5
   isEdible: 1
   foodValue: 2
-  associatedImage: {fileID: 2800000, guid: ce0244ae06a16d249be16d93dde119b0, type: 3}
+  associatedImage: {fileID: 2800000, guid: dfdb62ed62a85ca43a540ae08e63e9cd, type: 3}
