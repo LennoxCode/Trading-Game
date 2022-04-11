@@ -5,9 +5,8 @@ using UnityEngine;
 
 public class CityController : MonoBehaviour
 {
-    public float distanceToPlayerxd;
-
-    [SerializeField]private Inventory cityInventory;
+    [SerializeField]  private Inventory cityInventory;
+    private static readonly float SALEMODIFIER;
     private bool playerIsInCity = false;
 
     // Start is called before the first frame update
@@ -44,9 +43,11 @@ public class CityController : MonoBehaviour
            
        }
     }
-
     public void BuyGoodFromPlayer(string goodName)
     {
+        if (!playerIsInCity) return;
+        int price = GetSalePriceOfGood(goodName);
+        if (price == 0) return;
         cityInventory.BuyFrom(PlayerController.instance.GetInventory(), goodName, 1);
         foreach (Inventory.ItemInInventory item in cityInventory.itemsInInventory)
         {
@@ -57,7 +58,22 @@ public class CityController : MonoBehaviour
             }
            
         }
+        PlayerController.instance.TakeMoney(-price);
         
+    }
+
+    public int GetSalePriceOfGood(string goodName)
+    {
+        Inventory.ItemInInventory? item =  cityInventory.GetItemByName(goodName);
+        if (!item.HasValue) return 0;
+        Inventory.ItemInInventory realItem = item.Value;
+        float salePrice = realItem.good.baseCost * realItem.localModifier;
+        return Mathf.RoundToInt(salePrice);
+    }
+
+    public int GetBuyPriceOfGood(string goodName)
+    {
+        return Mathf.RoundToInt( GetSalePriceOfGood(goodName) * SALEMODIFIER);
     }
     public bool IsPlayerInCity()
     {
@@ -68,7 +84,6 @@ public class CityController : MonoBehaviour
     {
         Vector3 distanceToPlayer = PlayerController.PInstance.transform.position -  transform.position;
         distanceToPlayer.y = 0;
-        this.distanceToPlayerxd = distanceToPlayer.magnitude;
         if (distanceToPlayer.magnitude == 0)
         {
             playerIsInCity = true;

@@ -46,7 +46,7 @@ public class Inventory
         from.ChangeGoodAmount(goodName, -amount);
         ChangeGoodAmount(goodName, amount);
     }
-    private ItemInInventory? GetItemByName(string goodName)
+    public ItemInInventory? GetItemByName(string goodName)
     {
         foreach (ItemInInventory item in itemsInInventory)
         {
