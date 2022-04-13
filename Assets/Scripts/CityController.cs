@@ -35,15 +35,9 @@ public class CityController : MonoBehaviour
         int price = GetSalePriceOfGood(goodName);
         if (price == 0 || PlayerController.instance.GetMoneyAmount() - price < 0)return ;
         if (!cityInventory.SellTo(PlayerController.instance.GetInventory(), goodName, 1)) return;
-       foreach (Inventory.ItemInInventory item in cityInventory.itemsInInventory)
-       {
-           if (item.good.goodName.Equals(goodName))
-           {
-               MenuController.MCInstance.UpdateTradeGoodDisplay(item);
-           }
-           
-       }
-       PlayerController.instance.ChangeMoney(-price);
+        Inventory.ItemInInventory soldItem = cityInventory.GetItemByName(goodName).Value;
+        GameEvents.current.UpdateGoodInterface(soldItem); 
+        PlayerController.instance.ChangeMoney(-price);
     }
     public void BuyGoodFromPlayer(string goodName)
     {
@@ -51,7 +45,9 @@ public class CityController : MonoBehaviour
         int price = GetBuyPriceOfGood(goodName);
         if (price == 0) return;
         if(!cityInventory.BuyFrom(PlayerController.instance.GetInventory(), goodName, 1))return;
-        MenuController.MCInstance.UpdateTradeGoodDisplay(cityInventory.GetItemByName(goodName).Value);
+        Inventory.ItemInInventory soldItem = cityInventory.GetItemByName(goodName).Value;
+        GameEvents.current.UpdateGoodInterface(soldItem);
+        //MenuController.MCInstance.UpdateTradeGoodDisplay(cityInventory.GetItemByName(goodName).Value);
         PlayerController.instance.ChangeMoney(price);
         
     }

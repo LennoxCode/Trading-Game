@@ -39,5 +39,24 @@ public class GameEvents : MonoBehaviour
             buyGood(goodName);
         }
     }
+    public event Action<string> sellGood;
+
+    public void SellGood(string goodName)
+    {
+        if (sellGood != null)
+        {
+            sellGood(goodName);
+        }
+    }
+
+    public event Action<Inventory.ItemInInventory> updateGoodInterface;
+
+    public void UpdateGoodInterface(Inventory.ItemInInventory good)
+    {
+        if (updateGoodInterface != null)
+        {
+            updateGoodInterface(good);
+        }
+    }
 
 }

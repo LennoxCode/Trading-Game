@@ -37,6 +37,7 @@ public class TradeMenuItemController : MonoBehaviour
 
     private void Awake()
     {
+        GameEvents.current.updateGoodInterface += UpdateTradeGoodDisplay;
         foreach(GameObject city in GameObject.FindGameObjectsWithTag("Cities"))
         {
             if (city.GetComponent<CityController>().IsPlayerInCity()) playerCity = city.GetComponent<CityController>();
@@ -51,6 +52,16 @@ public class TradeMenuItemController : MonoBehaviour
     public void UpdateTradeGoodDisplay(int amountAvailable)
     {
         productStockDisplay.text = amountAvailable + " Available";
+    }
+
+    private void UpdateTradeGoodDisplay(Inventory.ItemInInventory item)
+    {
+        if (!item.good.goodName.Equals(tradeGoodName)) return;
+        TradingGood good = item.good;
+        tradeGoodName = good.goodName;
+        productNameDisplay.text = good.goodName;
+        productStockDisplay.text = item.amountHeld + " Available";
+        
     }
     void Start()
     {
