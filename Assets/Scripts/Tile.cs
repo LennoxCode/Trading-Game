@@ -22,6 +22,7 @@ public class Tile : MonoBehaviour
     void OnMouseDown()
     {
         if(terrain.isAccesible && !EventSystem.current.IsPointerOverGameObject()) PlayerController.PInstance.transform.position = transform.position + new Vector3(0, 0.8f, 0);
+        TileNavigation.instance.GetRouteTo(transform.position, transform.position);
     }
     public Terrain GetTerrain() { return terrain; }
 }
