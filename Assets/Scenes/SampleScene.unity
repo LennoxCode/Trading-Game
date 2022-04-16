@@ -8769,7 +8769,7 @@ PrefabInstance:
     - target: {fileID: 2496558518406433733, guid: 07fe4f52b7eef5c4991393e41ee3b745,
         type: 3}
       propertyPath: cityInventory.itemsInInventory.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2496558518406433733, guid: 07fe4f52b7eef5c4991393e41ee3b745,
         type: 3}
@@ -8785,6 +8785,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 2496558518406433733, guid: 07fe4f52b7eef5c4991393e41ee3b745,
         type: 3}
+      propertyPath: cityInventory.itemsInInventory.Array.data[2].good
+      value: 
+      objectReference: {fileID: 11400000, guid: e172c8c7471ff694fa847eff7069b27e,
+        type: 2}
+    - target: {fileID: 2496558518406433733, guid: 07fe4f52b7eef5c4991393e41ee3b745,
+        type: 3}
       propertyPath: cityInventory.itemsInInventory.Array.data[0].amountHeld
       value: 33
       objectReference: {fileID: 0}
@@ -8795,6 +8801,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2496558518406433733, guid: 07fe4f52b7eef5c4991393e41ee3b745,
         type: 3}
+      propertyPath: cityInventory.itemsInInventory.Array.data[2].amountHeld
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2496558518406433733, guid: 07fe4f52b7eef5c4991393e41ee3b745,
+        type: 3}
       propertyPath: cityInventory.itemsInInventory.Array.data[0].localModifier
       value: 1.2
       objectReference: {fileID: 0}
@@ -8802,6 +8813,11 @@ PrefabInstance:
         type: 3}
       propertyPath: cityInventory.itemsInInventory.Array.data[1].localModifier
       value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2496558518406433733, guid: 07fe4f52b7eef5c4991393e41ee3b745,
+        type: 3}
+      propertyPath: cityInventory.itemsInInventory.Array.data[2].localModifier
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2732356870863746309, guid: 07fe4f52b7eef5c4991393e41ee3b745,
         type: 3}
