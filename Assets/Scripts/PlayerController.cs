@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]private int food;
 
     [SerializeField] private Inventory _inventory;
+
+    public Tile currTile;
     // Start is called before the first frame update
     void Start()
     {

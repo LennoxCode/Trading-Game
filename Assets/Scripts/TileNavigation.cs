@@ -1,18 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class TileNavigation : MonoBehaviour
 {
     [SerializeField] private Grid mapGrid;
-    [SerializeField] private List<TerrainData> _terrainDatas;
-    [SerializeField] private Tilemap _tilemap;
     [SerializeField] private Transform rootTile;
     private Vector3Int tileOffset;
-    private List<Vector3> frontierPositions;
-    private List<Vector3> reachedPositions;
+    
     public static TileNavigation instance;
     public Tile[,] grid;
     private Dictionary<TileBase, TerrainData> dataFromTiles;
@@ -26,7 +24,6 @@ public class TileNavigation : MonoBehaviour
         tileOffset = mapGrid.WorldToCell(rootTile.position);
         tileOffset.x = Mathf.Abs(tileOffset.x);
         tileOffset.y = Mathf.Abs(tileOffset.y);
-        Debug.Log(tileOffset);
     }
 
     public void SetTerainData(Vector3 position, Tile terrainData)
@@ -46,39 +43,99 @@ public class TileNavigation : MonoBehaviour
 
     public Tile GetTerainData(Vector3 position)
     {
+        Debug.Log(mapGrid.WorldToCell(position));
         Vector3Int cellPosition = mapGrid.WorldToCell(position) + tileOffset;
         return grid[cellPosition.x, cellPosition.y];
     }
-    private void Start()
+
+    public Tile GetTerainDataFromGrid(Vector3Int position)
     {
-        TileBase test = _tilemap.GetTile(new Vector3Int(0, 0, 0));
-        
+        Vector3Int gridSpace = position + tileOffset;
+        return grid[gridSpace.x, gridSpace.y];
     }
-
-    public void GetRouteTo(Vector3 fromPosition, Vector3 toPosition)
+    public List<Tile> GetNeighbors(Vector3Int position)
     {
-        
-        Vector3 cellPosition = mapGrid.WorldToCell(fromPosition);
-        Vector3 target = mapGrid.WorldToCell(toPosition);
-        frontierPositions.Add(cellPosition);
-        reachedPositions.Add(cellPosition);
-        while (frontierPositions.Count > 0)
+        List<Tile> reti = new List<Tile>();
+        for (int x = -1; x <= 1; x++)
         {
-            Vector3 current = frontierPositions[0];
-            frontierPositions.Remove(current);
-            if (current == target) break;
-            for (int x = -1; x <= 1; x++)
+            for (int y = -1; y <= 1; y++)
             {
-                for (int y = -1; y <= 1; y++)
-                {
-                    Vector3 offset = new Vector3(x, y, 0);
-                    frontierPositions.Add(mapGrid.WorldToCell(current + offset));
-                    reachedPositions.Add(mapGrid.WorldToCell(current + offset));
-
-                }
+                Vector3Int offset = new Vector3Int(x, y, 0);
+                reti.Add(GetTerainDataFromGrid(position + offset));
             }
         }
-        
+
+        return reti;
+    }
+
+    private List<Vector3Int> GetOffsetNeigbors(Vector3Int coordinates)
+    {
+        List<Vector3Int> reti = new List<Vector3Int>();
+        //if row is even the offset needs to be handled differently
+        if (coordinates.y % 2 == 0)
+        {
+            reti.Add(coordinates + new Vector3Int(-1, 1,0 ));
+            reti.Add(coordinates + new Vector3Int(0, 1,0));
+            reti.Add(coordinates + new Vector3Int(-1, 0,0 ));
+            reti.Add(coordinates + new Vector3Int(1, 0,0 ));
+            reti.Add(coordinates + new Vector3Int(-1, -1,0));
+            reti.Add(coordinates + new Vector3Int(0, -1,0 ));
+        }
+        else
+        {
+            reti.Add(coordinates + new Vector3Int(0, 1,0 ));
+            reti.Add(coordinates + new Vector3Int(1, 1,0 ));
+            reti.Add(coordinates + new Vector3Int(-1, 0,0 ));
+            reti.Add(coordinates + new Vector3Int(1, 0,0 ));
+            reti.Add(coordinates + new Vector3Int(0, -1,0 ));
+            reti.Add(coordinates + new Vector3Int(1, -1,0 ));
+           
+        }
+
+        return reti;
+    }
+    public List<Tile> GetRouteTo(Vector3 fromPosition, Vector3 toPosition)
+    {
+      
+        Queue<Vector3Int> frontierPositions = new Queue<Vector3Int>();
+        Dictionary<Vector3Int, Vector3Int> came_from = new Dictionary<Vector3Int, Vector3Int>();
+        Vector3Int cellPosition = mapGrid.WorldToCell(fromPosition);
+        Vector3Int target = mapGrid.WorldToCell(toPosition);
+        target.z = 0;
+        //frontierPositions.Add(cellPosition);
+        frontierPositions.Enqueue(cellPosition);
+        while (frontierPositions.Count > 0)
+       //for(int i = 0; i < 8; i ++)
+        {
+            //= frontierPositions.Last();
+            Vector3Int current = frontierPositions.Dequeue();
+            if (current == target) break;
+            foreach (Vector3Int neighbor in GetOffsetNeigbors(current))
+            {
+                if (!came_from.ContainsKey(neighbor))
+                {
+                    frontierPositions.Enqueue(neighbor);
+                    came_from[neighbor] = current;
+                }
+              
+            }
+
+        }
+
+        List<Tile> reti = new List<Tile>();
+        Debug.Log("found target");
+        Vector3Int test = target;
+        while (test != cellPosition)
+        {
+            test = came_from[test];
+            reti.Add(GetTerainDataFromGrid(test));
+            
+        }
+        foreach (Tile tile in reti)
+        {
+            Debug.Log(tile.GetTerrain().terrainKind);
+        }
+        return reti;
     }
     
 }
