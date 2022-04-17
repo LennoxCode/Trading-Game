@@ -21,10 +21,14 @@ public class Tile : MonoBehaviour
     
     void OnMouseDown()
     {
-        if(terrain.isAccesible && !EventSystem.current.IsPointerOverGameObject()) PlayerController.PInstance.transform.position = transform.position + new Vector3(0, 0.8f, 0);
+        //if(terrain.isAccesible && !EventSystem.current.IsPointerOverGameObject()) PlayerController.PInstance.transform.position = transform.position + new Vector3(0, 0.8f, 0);
         //Tile test = TileNavigation.instance.GetTerainData(transform.position);
-       
-        if(PlayerController.instance.currTile != null) TileNavigation.instance.GetRouteTo(PlayerController.instance.currTile.transform.position,transform.position);
+        if (EventSystem.current.IsPointerOverGameObject() || PlayerController.instance.IsMoving()) return;
+        if (PlayerController.instance.currTile != null)
+        {
+            List<Vector3> test = TileNavigation.instance.GetRouteTo(PlayerController.instance.currTile.transform.position,transform.position);
+            StartCoroutine(PlayerController.instance.WalkPath(test));
+        }
         PlayerController.instance.currTile  = this;
         //Debug.Log(test.GetTerrain().terrainKind);
         

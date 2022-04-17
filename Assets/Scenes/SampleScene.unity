@@ -4063,6 +4063,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 891224056}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &900539746 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2732356870863746309, guid: 72b3e6bd2abad764d86eb79a724a056a,
+    type: 3}
+  m_PrefabInstance: {fileID: 58712134}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &909100346
 GameObject:
   m_ObjectHideFlags: 0
@@ -4093,8 +4099,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapGrid: {fileID: 604622828}
-  _terrainDatas: []
-  _tilemap: {fileID: 1551116748}
   rootTile: {fileID: 1623738182}
 --- !u!4 &909100348
 Transform:
@@ -8806,7 +8810,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1954497645}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.764, y: 0.79, z: 1.79}
+  m_LocalPosition: {x: 1.731953, y: 0.79, z: 1.5}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8824,6 +8828,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c58ce69d8566a684ab6022f32bd6405d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startTile: {fileID: 900539746}
+  movementSpeed: 0.5
   startMoney: 400
   startFood: 22
   money: 0
@@ -8836,6 +8842,7 @@ MonoBehaviour:
     - good: {fileID: 11400000, guid: e52aece2074093b44a5b56fc097d2d23, type: 2}
       amountHeld: 0
       localModifier: 0
+  currTile: {fileID: 0}
 --- !u!1001 &1970697713
 PrefabInstance:
   m_ObjectHideFlags: 0

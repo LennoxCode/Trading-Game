@@ -94,7 +94,7 @@ public class TileNavigation : MonoBehaviour
 
         return reti;
     }
-    public List<Tile> GetRouteTo(Vector3 fromPosition, Vector3 toPosition)
+    public List<Vector3> GetRouteTo(Vector3 fromPosition, Vector3 toPosition)
     {
       
         Queue<Vector3Int> frontierPositions = new Queue<Vector3Int>();
@@ -119,22 +119,23 @@ public class TileNavigation : MonoBehaviour
                 }
               
             }
-
+        
         }
 
-        List<Tile> reti = new List<Tile>();
+        List<Vector3> reti = new List<Vector3>();
         Debug.Log("found target");
         Vector3Int test = target;
+        //reti.Add(GetTerainDataFromGrid(target));
         while (test != cellPosition)
         {
+            reti.Add(GetTerainDataFromGrid(test).transform.position);
             test = came_from[test];
-            reti.Add(GetTerainDataFromGrid(test));
+           
             
         }
-        foreach (Tile tile in reti)
-        {
-            Debug.Log(tile.GetTerrain().terrainKind);
-        }
+
+
+        reti.Reverse();
         return reti;
     }
     
