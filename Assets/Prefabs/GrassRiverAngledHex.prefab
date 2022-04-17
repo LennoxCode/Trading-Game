@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ee19d1e5cca03418df3bf462613cec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrain: {fileID: 11400000, guid: 278ba757879c94d49b606b2a57d70699, type: 2}
+  terrain: {fileID: 11400000, guid: 89a7e7524ebb5cc41bb1d4508049a38a, type: 2}
 --- !u!1 &6790062709199602303
 GameObject:
   m_ObjectHideFlags: 0

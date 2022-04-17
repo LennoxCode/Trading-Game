@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9cf4c9d7dd624147ae6116910736d8a, type: 3}
   m_Name: FarmLandTerrainData
   m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 0}
   isAccesible: 1
   movementCost: 1.5
   terrainKind: FarmLand

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9cf4c9d7dd624147ae6116910736d8a, type: 3}
-  m_Name: TerrainDataGrass 1
+  m_Name: TerrainDataRiver
   m_EditorClassIdentifier: 
   isAccesible: 1
   movementCost: 1

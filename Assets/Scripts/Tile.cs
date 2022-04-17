@@ -10,7 +10,7 @@ public class Tile : MonoBehaviour
 
     void Start()
     {
-        
+        TileNavigation.instance.SetTerainData(transform.position, this);
     }
 
     // Update is called once per frame
@@ -22,7 +22,9 @@ public class Tile : MonoBehaviour
     void OnMouseDown()
     {
         if(terrain.isAccesible && !EventSystem.current.IsPointerOverGameObject()) PlayerController.PInstance.transform.position = transform.position + new Vector3(0, 0.8f, 0);
-        //TileNavigation.instance.GetRouteTo(transform.position, transform.position);
+        Tile test = TileNavigation.instance.GetTerainData(transform.position);
+        Debug.Log(test.GetTerrain().terrainKind);
+        
     }
     public Terrain GetTerrain() { return terrain; }
 }
