@@ -112,7 +112,8 @@ public class TileNavigation : MonoBehaviour
             if (current == target) break;
             foreach (Vector3Int neighbor in GetOffsetNeigbors(current))
             {
-                if (!came_from.ContainsKey(neighbor))
+                Tile neighborTile = GetTerainDataFromGrid(neighbor);
+                if (neighborTile && neighborTile.GetTerrain().isAccesible &&!came_from.ContainsKey(neighbor))
                 {
                     frontierPositions.Enqueue(neighbor);
                     came_from[neighbor] = current;
