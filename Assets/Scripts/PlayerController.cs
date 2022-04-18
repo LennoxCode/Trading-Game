@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         {
             //transform.position = target +  new Vector3(0, 0.8f, 0);
             yield return StartCoroutine(WalkTo(target +  new Vector3(0, 0.8f, 0)));
-            yield return new WaitForSeconds(0.15f);
+            yield return new WaitForFixedUpdate();
         }
 
         isMoving = false;
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator WalkTo(Vector3 position)
     {
-        while ((transform.position - position).magnitude > 0.1)
+        while ((transform.position - position).magnitude > 0.04)
         {
             Vector3 direction = (position - transform.position).normalized;
             transform.position += direction * Time.deltaTime * movementSpeed;
