@@ -18,7 +18,7 @@ public class TimeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentTime.hours = secondsPassed / 60;
+        currentTime.hours = ((secondsPassed / 60) % 12) + 12;
         currentTime.minutes = secondsPassed % 60;
     }
 

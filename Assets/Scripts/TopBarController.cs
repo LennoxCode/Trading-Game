@@ -22,8 +22,9 @@ public class TopBarController : MonoBehaviour
         timeDisplay.text = currTime.hours.ToString("00") + ":" + currTime.minutes.ToString("00");
     }
 
-    public void UpdateRessourceDisplay()
+    public void UpdateRessourceDisplay(int currFood, int currMoney)
     {
-        
+        foodDisplay.text = currFood + " Food";
+        moneyDisplay.text = currMoney + " Money";
     }
 }

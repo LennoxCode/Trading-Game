@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -56,6 +57,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void LateUpdate()
+    {
+        TopBarController.instance.UpdateRessourceDisplay(food, money);
     }
 
     public void ChangeMoney(int amount)
