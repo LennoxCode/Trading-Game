@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 public class MenuController : MonoBehaviour
 {
     public static MenuController MCInstance;
-    [SerializeField] GameObject tradeButton;
+    [SerializeField] GameObject cityMenu;
     [SerializeField] GameObject tradeMenu;
     [SerializeField] GameObject tradeMenu2;
     [SerializeField] GameObject tradingGoodMenuItemPrefab;
@@ -22,7 +23,7 @@ public class MenuController : MonoBehaviour
     }
     public void SetTradeButton(bool active)
     {
-        tradeButton.SetActive(active);
+        cityMenu.SetActive(active);
     }
     public void ToggleTradeMenu()
     {
