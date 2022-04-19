@@ -20,6 +20,7 @@ public class TimeController : MonoBehaviour
     {
         currentTime.hours = ((secondsPassed / 60) % 12) + 12;
         currentTime.minutes = secondsPassed % 60;
+        DayNightController.instance.SetSun(currentTime);
     }
 
     private void LateUpdate()
