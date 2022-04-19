@@ -18,9 +18,10 @@ public class TimeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (secondsPassed > 1440) EndDay();
         currentTime.hours = ((secondsPassed / 60) % 12) + 12;
         currentTime.minutes = secondsPassed % 60;
-        DayNightController.instance.SetSun(currentTime);
+        DayNightController.instance.SetSun(secondsPassed);
     }
 
     private void LateUpdate()
@@ -35,6 +36,13 @@ public class TimeController : MonoBehaviour
             secondsPassed += 1;
             yield return new WaitForSeconds(1.0f);
         }
+    }
+
+    private void EndDay()
+    {
+        secondsPassed = 0;
+        GameEvents.current.OnDayEnd();
+        
     }
     public DayTime GetCurrentTime()
     {

@@ -25,9 +25,10 @@ public class DayNightController : MonoBehaviour
         
     }
 
-    public void SetSun(TimeController.DayTime currTime)
+    public void SetSun(int passedSeconds)
     {
-        float rotationAngle = Mathf.LerpAngle(0, 360, currTime.hours / 12);
+        float t = passedSeconds / 1440.0f;
+        float rotationAngle = Mathf.Lerp(0, 360, t);
         sunRig.transform.eulerAngles = new Vector3(0, rotationAngle, 0);
     }
 }

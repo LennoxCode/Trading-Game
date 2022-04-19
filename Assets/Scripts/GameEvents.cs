@@ -59,4 +59,14 @@ public class GameEvents : MonoBehaviour
         }
     }
 
+    public event Action dayEnded;
+
+    public void OnDayEnd()
+    {
+        if (dayEnded != null)
+        {
+            dayEnded();
+        }
+    }
+
 }
